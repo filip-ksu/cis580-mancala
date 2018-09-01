@@ -1,0 +1,247 @@
+:root {
+    --bg-dark: #263238;
+    --bg-light: #eceff1;
+    --bg-board: #bcaaa4;
+    --bg-hole: #795548;
+    --text-light: #ffffff;
+    --text-dark: rgba(0, 0, 0, 0.87);
+
+    --color-blue: #2196f3;
+    --color-red: #f44336;
+    --color-green: #4caf50;
+    --color-yellow: #ffeb3b;
+}
+
+div {
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    height: 100vh;
+}
+
+#content > .content-container > * {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+header,
+#content,
+footer {
+    padding: 1em;
+}
+
+header {
+    height: 3em;
+}
+
+#content {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    height: calc(100vh - 12em);
+}
+
+footer {
+    text-align: center;
+    height: 3em;
+}
+
+header h1 {
+    float: left;
+    margin: 0;
+}
+
+header p {
+    float: right;
+}
+
+#menu {
+    text-align: center;
+}
+
+#game-info {
+    display: none;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#game-info.game {
+    display: block;
+}
+
+#board {
+    max-width: 80em;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+    flex-direction: row;
+    border-radius: 2em;
+    background-color: var(--bg-board);
+}
+
+#board.game {
+    display: flex;
+}
+
+#board::before {
+    padding-bottom: calc(33% - 2em);
+    content: '';
+    display: block;
+}
+
+#fields {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 6;
+}
+
+#goal-1-wrapper,
+#goal-2-wrapper {
+    margin: 0.5em 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+#goal-1,
+#goal-2 {
+    border-radius: 1.5em;
+    background-color: var(--bg-hole);
+    flex-grow: 1;
+}
+
+#goal-1-label,
+#goal-2-label {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+#field-1,
+#field-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#field-1,
+#field-1-labels {
+    align-items: flex-end;
+}
+
+#field-2,
+#field-2-labels {
+    align-items: flex-start;
+}
+
+#field-1-labels,
+#field-2-labels {
+    display: flex;
+    flex-direction: row;
+}
+
+#field-1-labels > span,
+#field-2-labels > span {
+    flex-grow: 1;
+    text-align: center;
+}
+
+#goal-1-wrapper,
+#goal-2-wrapper,
+#field-1-labels,
+#field-2-labels {
+    flex-grow: 1;
+}
+
+#goal-1,
+#goal-2 {
+    position: relative;
+}
+
+.hole {
+    margin: 0.5em;
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+    border-radius: 50%;
+    background-color: var(--bg-hole);
+}
+
+#board.player-1 #field-1 .hole:hover {
+    cursor: pointer;
+}
+
+#board.player-2 #field-2 .hole:hover {
+    cursor: pointer;
+}
+
+#board.player-1 #field-1 .hole:hover:empty,
+#board.player-2 #field-2 .hole:hover:empty {
+    cursor: initial;
+}
+
+.hole > .stone,
+#goal-1 > .stone,
+#goal-2 > .stone {
+    border-radius: 50%;
+    width: 15%;
+    position: absolute;
+    top: 42.5%;
+    left: 42.5%;
+}
+
+.stone::before {
+    display: block;
+    content: "";
+    padding-bottom: 100%;
+}
+
+.stone:nth-child(4n + 1) {
+    background-color: var(--color-blue);
+}
+
+.stone:nth-child(4n + 2) {
+    background-color: var(--color-red);
+}
+
+.stone:nth-child(4n + 3) {
+    background-color: var(--color-green);
+}
+
+.stone:nth-child(4n + 4) {
+    background-color: var(--color-yellow);
+}
+
+#field-2 > .hole::before {
+    display: block;
+    content: '';
+    padding-bottom: 100%;
+}
+
+#field-1 > .hole::after {
+    display: block;
+    content: '';
+    padding-bottom: 100%;
+    border-radius: 50%;
+    background-color: var(--bg-hole);
+}
+
+.goal {
+    background-color: var(--bg-hole);
+}
+
+#btn-new-game {
+    font: inherit;
+    box-sizing: content-box;
+    cursor: pointer;
+    background-color: var(--bg-hole);
+    color: var(--text-light);
+    font-size: 1em;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.5em;
+}
